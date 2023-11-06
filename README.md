@@ -1,5 +1,5 @@
 # Autoestudio-Java
-Apuntes inicio programación en Java.
-Gracias por leerme uwu.
+Algunos apuntes inicio programación en Java.
+Sólo son apuntes que hice al inicio del curso.
 
 Ayline Ponce San Martin
