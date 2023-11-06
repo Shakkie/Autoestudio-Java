@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Operadores {
+public class Operadores1 {
 
     // videito del peruano en operadores//
 
