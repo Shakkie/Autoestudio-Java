@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+// nos pide 2 cadenas de String x teclado, mostrar su 
+// combinacion o suma de caracteres
+
+public class EjercicioString {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        // declara variables
+
+        String nombre1;
+        String nombre2;
+        // acordarme de agregarle el valor vacio a la variable que suma en este caso
+        String suma_nombre = " ";
+
+        System.out.println("Introduce el primer nombre: ");
+        nombre1 = entrada.next();
+
+        System.out.println("Introduce el segundo nombre: ");
+        nombre2 = entrada.next();
+
+        suma_nombre += nombre1 + " + " + nombre2;
+
+        System.out.println("La suma de los dos meows meows es:  " + suma_nombre);
+
+    }
+}
