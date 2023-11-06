@@ -1,0 +1,310 @@
+import java.util.Random;
+import java.util.Scanner;
+
+// me dijeron que no tenia que hacer la 2 y 3 
+// puntos del ejercicio, asi que no los inclui.
+// llevo 3 semanas repasando programacion y no estoy segura
+// si es la forma correcta de aplicar arrays
+// pero me gustó a aprender a llamar funciones aunque me costara demasiado x.x
+// ¡¡ perdon las notas, las necesito para no olvidar lo que hice !!
+
+public class alumno_cumpleanos {
+
+    public static String fecha_cumple() {
+        Random random = new Random();
+
+        // generar numeros randoms o fechas random de cumpleaños
+        // recordar que el +1 al final es para que si nos da 0 se suma +1,
+        // asi los dias y los meses quedan de 1-12/1-30
+        // tambien puse colocar un int min =1 -int max = 12
+        // int randomNumero = random.nextInt(max-min +1) + min
+
+        int mes = random.nextInt(12) + 1;
+        int dia = random.nextInt(30) + 1;
+
+        // de aqui saque informacion
+        // https://stackoverflow.com/questions/3377688/what-do-these-symbolic-strings-mean-02d-01d
+
+        return String.format("%02d-%02d", mes, dia);
+    }
+
+    // declarando metodo, creo una funcion alumno_fecha
+    // recordar que void aqui en el metodo no devuelve ningun valor
+    public static void alumno_fecha(String[] nombres, String[] fechas_cumpleanos) {
+        // creo un bucle for, i=0, mientras i sea menos que la longitud de mi strings,
+        // suma++
+        for (int i = 0; i < nombres.length; i++) {
+            System.out.println();
+            System.out.println(nombres[i] + ": " + fechas_cumpleanos[i]);
+        }
+    }
+
+    public static void alumno_mes(String[] nombres, String[] fechas_cumpleanos, int mes_random) {
+        for (int i = 0; i < nombres.length; i++) {
+            // recordar que el split divide cadenas (fecha cumple = 10-05)
+            String[] fecha = fechas_cumpleanos[i].split("-");
+            // convierte en numero entero
+            int mes = Integer.parseInt(fecha[0]);
+            if (mes == mes_random) {
+                System.out.println();
+                System.out.println(nombres[i] + ": " + fechas_cumpleanos[i]);
+                System.out.println();
+            }
+        }
+    }
+
+    public static void alumno_mes_dia(String[] nombres, String[] fechas_cumpleanos, int dia_random, int mes_random) {
+        // agregue un boolean para que me diera una opcion en el
+        // caso de que nadie cumpla años ese dia random
+
+        boolean found_cumple = false;
+
+        for (int i = 0; i < nombres.length; i++) {
+            String[] fecha = fechas_cumpleanos[i].split("-");
+            int mes = Integer.parseInt(fecha[0]);
+            int dia = Integer.parseInt(fecha[1]);
+            if (mes == mes_random && dia == dia_random) {
+                found_cumple = true;
+                System.out.println();
+                System.out.println(nombres[i] + ": " + fechas_cumpleanos[i]);
+                System.out.println();
+            }
+        }
+        // recordar que el ! antes de mi variable found_cumple es false,
+        // si mi found_cumple es true
+        if (!found_cumple) {
+            System.out.println();
+            System.out.println("Nadie cumple años el día " + dia_random + " del mes " + mes_random + ".");
+            System.out.println();
+        }
+    }
+
+    public static void alumno_meses(String[] nombres, String[] fechas_cumpleanos) {
+        for (int mes = 1; mes <= 12; mes++) {
+            System.out.println("Mes " + mes + ": ");
+            for (int i = 0; i < nombres.length; i++) {
+                String[] fecha = fechas_cumpleanos[i].split("-");
+                int mesAlumno = Integer.parseInt(fecha[0]);
+                if (mesAlumno == mes) {
+                    System.out.println();
+                    System.out.println(nombres[i] + ": " + fechas_cumpleanos[i]);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static String menu_estacion() {
+        System.out.println("Selecciona una estación: ");
+        System.out.println();
+        System.out.println("1. Invierno");
+        System.out.println("2. Primavera");
+        System.out.println("3. Verano");
+        System.out.println("4. Otoño");
+        System.out.println();
+
+        Scanner scanner = new Scanner(System.in);
+        int opcionEstacion = scanner.nextInt();
+        scanner.nextLine();
+        // recordar guardar strings o char guardar un espacio vacio ""
+        String opcion_estacion = "";
+
+        switch (opcionEstacion) {
+            case 1:
+                opcion_estacion = "Invierno";
+                break;
+            case 2:
+                opcion_estacion = "Primavera";
+                break;
+            case 3:
+                opcion_estacion = "Verano";
+                break;
+            case 4:
+                opcion_estacion = "Otoño";
+                break;
+            default:
+                System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+                System.out.println(" ¡ Elige una opción válida c: !");
+                System.out.println("______________________________________");
+                System.out.println("");
+                System.out.println("");
+                return null;
+        }
+        return opcion_estacion;
+    }
+
+    public static String nombre_estacion(int mes) {
+        // recordar la forma de usar || que significa que alguno de
+        // las condicones es verdadera se cumple
+        // x.x
+        // si mes esta entre 1 y 2 o 12 es invierno
+        // si mes es 3 y 5 primavera
+        // si mes es 6 y 8 verano
+        // sino es otoño
+        if ((mes >= 1 && mes <= 2) || mes == 12) {
+            return "Invierno";
+        } else if (mes >= 3 && mes <= 5) {
+            return "Primavera";
+        } else if (mes >= 6 && mes <= 8) {
+            return "Verano";
+        } else {
+            return "Otoño";
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println();
+        System.out.println("              ¡ Bienvenidos :) !");
+
+        // (cine fichero)
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // guardamos los nombres que le otorgamos al strings
+        String[] nombres = { "Cirino León García", "Baldomero García Romero", "Nazario García Jiménez",
+                "Manuel Garrido García", "Celia Méndez García", "Lorena Moya Barrios", "Nicodemo Prieto Loto",
+                "Carmen Giménez Gilda",
+                "Tobías Blesa Benitez", "Aurelia Medina Gonzalez", "Andrés Martinez León", "Francisca Malabé Crespo",
+                "Inocencio García Moya",
+                "Salomé Moya Amador", "Fausto Pérez Ibáñez", "Inmaculada Concepción Morales", "Silvia Carrasco Peña",
+                "Benedicto Timón Herrero", "Leocadia Suave Prieto", "Leopoldo Cruz Molina", "Sebastián Rosa Ramos",
+                "Elisa Lisa Medina", "Alba Soler Díaz", "Luz Smith Ortiz", "Mohamed García Arias",
+                "Natalia Medina García",
+                "Teófila Barrios Esteban", "Epifanía Francisca Ferrer", "Vicente Gómez Álvarez", "Aitor Sánchez Mendia",
+                "Carina Lima Esteban", "Aarón Ferrer Hernández", "Carlos García Hidalgo", "Cesáreo Gema Torres",
+                "Abel Aznar Iglesias",
+                "Lidia Pinar Cabrera", "Ramiro Roca Suárez", "Rodrigo Pérez Santiago", "Fortunato Vicente Vázquez",
+                "Renato Santo Sanz",
+                "Heraclio Hernández Suárez", "Guzmán Largo Vega", "Segismundo Hectáreo Medina",
+                "Ezequiel Estrellas Mora", "Cristóbal Díez Díaz",
+                "Adán García Núñez", "Amaro Bosque Castillo", "Cristóbal Adriano Cano", "Manuel Maria Pérez",
+                "Rogelio Roger Medina", "Donato Persa Peña",
+                "Nazario Quesos Cabrera", "Jacob Peña Esteban", "Purificación Santa López", "Balduino Reyes Católicos",
+                "Esteban Cuba Benítez",
+                "Mercedes Benz Santos", "Daciano Perro Parra", "Rogelio Velasco Guzmán", "Sonia Marciana Parra",
+                "Casimiro Miró Montero", "Roberto Ufarte López",
+                "Alejandro Cristiano Montoro", "Andrea Molina Cano", "Francisca Diez Sanz", "Gabriel Ena Guerrero",
+                "Amaro Madera Domínguez", "Aureliano Laurel Romero",
+                "Rebeca Grande Flores", "Silvio Martín Moreno", "Alfonso Pascual Jimenez", "Macario Campos Santos",
+                "Ceferino Porto Esteban",
+                "Salomé Durán Durán",
+                "Mariano Herrera Parra", "Ester Viña Mora", "Oto Smith Domínguez", "Román Sánchez Vega",
+                "Joaquín López Vargas", "Borja Hermo Sánchez",
+                "Norberto Pico Núñez", "Fabio Rosa Navarro", "Teodosia Vidal Román", "Matilde Nadal Román",
+                "Feliciano Ramirez Soler", "Cesáreo Pérez González", };
+        // asigno la cantidad de strings 100/mi longitud (length=100)
+        String[] fechas_cumpleanos = new String[100];
+        // aplico un ciclo for para que me ayude a generar fechas de cumpleaños
+        // aleatorias para cada uno de los nombres
+        // mientras i sea menor que nombres (100), i++ para que no nos de 0
+        for (int i = 0; i < nombres.length; i++) {
+            // cada iteracion me generará una fecha de cumple random
+            // por eso usamos:
+            fechas_cumpleanos[i] = fecha_cumple();
+        }
+
+        Scanner scanner = new Scanner(System.in);
+
+        // varible de la opcion elegida en el menu
+        int opcion;
+        // aplico un do while como bucle para el menu
+        do {
+            System.out.println("");
+            System.out.println("------------------------------------------------");
+            System.out.println("                      Menú ");
+            System.out.println("------------------------------------------------");
+            System.out.println();
+            System.out.println("1. Mostrar alumnos y fecha de sus cumpleaños");
+            System.out.println("2. Mostrar alumnos que cumplen por mes");
+            System.out.println("3. Mostrar alumnos que cumplen por un día y mes");
+            System.out.println("4. Mostrar alumnos que cumplen por cada mes");
+            System.out.println("5. Mostrar alumnos que cumplen por estación");
+            System.out.println("6. Salir");
+            System.out.println("");
+            System.out.print("Elige una opción: ");
+            System.out.print("");
+            // guardamos la opcion escrita por teclado
+            opcion = scanner.nextInt();
+
+            // Empezamos una condicional switch case, dependendiendo de la opcion elegida
+            // ejecutara cada caso
+
+            switch (opcion) {
+                // nombre alumno y fecha cumpleaños
+                case 1:
+                    alumno_fecha(nombres, fechas_cumpleanos);
+                    break;
+
+                // cumpleaños que existen en un mes especifico
+                case 2:
+                    System.out.println("");
+                    System.out.print("Ingresa el número de mes: ");
+                    System.out.print("");
+                    int mes_random = scanner.nextInt();
+                    alumno_mes(nombres, fechas_cumpleanos, mes_random);
+                    break;
+
+                // cumpleaños que existen en un dia de mes especifico
+                case 3:
+                    System.out.print("Ingresa el número de día: ");
+                    int dia_random = scanner.nextInt();
+                    System.out.print("Ingresa el número de mes: ");
+                    int mes_randomDia = scanner.nextInt();
+                    alumno_mes_dia(nombres, fechas_cumpleanos, dia_random, mes_randomDia);
+                    break;
+
+                // cumpleaños por mes especifico
+                case 4:
+                    alumno_meses(nombres, fechas_cumpleanos);
+                    break;
+
+                // cumpleaños por estacion, fue el que más me costó
+                case 5:
+                    String estacion_elegida = menu_estacion();
+                    if (estacion_elegida != null) {
+                        System.out.println("Alumnos con cumpleaños en " + estacion_elegida + ": ");
+                        System.out.println();
+                        for (int i = 0; i < nombres.length; i++) {
+                            String fecha = fechas_cumpleanos[i];
+                            int mes = Integer.parseInt(fecha.split("-")[0]);
+                            String estacionCumple = nombre_estacion(mes);
+
+                            if (estacionCumple.equalsIgnoreCase(estacion_elegida)) {
+                                System.out.println();
+                                System.out.println(nombres[i] + ": " + fecha);
+                            }
+                        }
+                    }
+                    break;
+
+                // salir del programa
+                case 6:
+                    System.out.println("");
+                    System.out.println("------------------------------------------------");
+                    System.out.println("        Estas saliendo del programa...");
+                    System.out.println("------------------------------------------------");
+                    System.out.println();
+                    System.out.println("               ¡   Adiós :) ! ");
+                    System.out.println();
+                    System.out.println();
+                    break;
+
+                // si la opcion ingresada no es valida
+                default:
+                    System.out.println("------------------------------------------------");
+                    System.out.println();
+                    System.out.println(" ¡ Ingresa una opión válida... c: !");
+                    System.out.println();
+                    System.out.println("--------------------------------------------------");
+                    System.out.println("");
+                    System.out.println("");
+                    break;
+            }
+        } while (opcion != 6);
+
+        scanner.close();
+
+    }
+}
