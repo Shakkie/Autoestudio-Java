@@ -1,0 +1,107 @@
+import java.util.Scanner;
+
+// IF - If Else - Else // 
+
+/* Condicionales: Son condiciones, nos presentan situaciones donde debemos decidir
+ * Por ejemplo: Elijo el camino A o el camino B?
+ * Los condicionales en Java son estructuras de control que permiten que un programa tome decisiones basadas en ciertas condiciones. 
+ * Los condicionales son fundamentales para controlar el flujo de ejecución de un programa y 
+ * ejecutar diferentes bloques de código según se cumplan o no ciertas condiciones. 
+ * 
+ * 
+ * if: La declaración "if" permite ejecutar un bloque de código si una condición dada se evalúa como verdadera. 
+ *      Si la condición no se cumple, el bloque de código no se ejecuta.
+ * if (condicion) {
+            Código a ejecutar si la condición es verdadera
+        }
+
+ * if-else: La declaración "if-else" permite ejecutar un bloque de código si la condición es verdadera y otro bloque de código si la condición es falsa.
+        if (condicion) {
+                Código a ejecutar si la condición es verdadera
+        } else {
+                Código a ejecutar si la condición es falsa
+        }
+
+ * if-else if-else: Puedes usar múltiples bloques "if-else if-else" para manejar varias condiciones secuencialmente. 
+ *                  El programa evaluará cada condición en orden y ejecutará el bloque de código del primer "if" o "else if" que sea verdadero.
+        if (condicion1) {
+                Código a ejecutar si condicion1 es verdadera
+        } else if (condicion2) {
+                Código a ejecutar si condicion2 es verdadera
+        } else {
+                Código a ejecutar si ninguna de las condiciones es verdadera
+        }
+
+ * switch-case: La estructura "switch" se utiliza cuando deseas tomar decisiones basadas en el valor de una expresión.
+ *              En lugar de evaluar condiciones, compara el valor de la expresión con los casos definidos y ejecuta el bloque de código correspondiente.
+ *              Si ningún caso coincide, se puede proporcionar un bloque de código predeterminado (usando la palabra clave default) que se ejecutará.
+ *              Por ejemplo: al ingresar un valor no valido.
+ *  switch (expresion) {
+        case valor1:
+                Código a ejecutar si la expresión es igual a valor1
+        break;
+        case valor2:
+                Código a ejecutar si la expresión es igual a valor2
+        break;
+        Otros casos
+        default:
+                Código a ejecutar si ninguno de los casos coincide
+        }
+
+ * 
+  */
+
+public class CondicionalesifElSE {
+        public static void main(String[] args) {
+
+                Scanner entrada = new Scanner(System.in);
+                char camino;
+
+                System.out.println("Ingresa el camino que quieres elegir: ");
+                // recordar que se pasa con next luego .charAt(0)
+                camino = entrada.next().charAt(0);
+                // aqui entra la condición IF,
+                // Recordar lo siguiente: "=" sirve para darle valor a algo (numero = 10)
+                // Recordar lo siguiente: "==" sirve para decir que es igual a algo (camino ==
+                // 'A') estas como preguntando
+                // Recordar lo siguiente: "!=" sirve para decir que no es igual a algo (camino!=
+                // 'A')
+                // Recordar lo siguiente: ">" sirve para decir que sea mayor que algo (camino >
+                // 'A')
+                // Recordar lo siguiente: "<" sirve para decir que sea menor que algo (camino <
+                // 'A')
+                // Recordar lo siguiente: ">=" sirve para decir que sea mayor o igual que algo
+                // (camino >= 'A')
+                // Recordar lo siguiente: "<=" sirve para decir que sea menor o igual que algo
+                // (camino <= 'A')
+                // Recordar lo siguiente: "&&" sirve para decir que se cumple ambas condiciones
+                // (camino == 'A' && camino == 'B')
+
+                // "si" // primera condicion
+                if (camino == 'A') {
+                        System.out.println("Elegiste el camino A");
+
+                }
+                // "si no" hace referencia a "en otro caso, caso contrario"
+                // segunda condicion
+                else if (camino == 'B') {
+                        System.out.println("Elegiste el camino B");
+
+                }
+                // tercera condicion
+                else if (camino == 'C') {
+                        System.out.println("Elegiste el camino C");
+
+                }
+                // no es condicion, solo sino se cumple nada de lo anterior tira el sigte
+                // mensaje.
+                // para eso sirve el ELSE SOLO.
+                else {
+                        System.out.println("No has elegido ningun camino válido");
+                }
+
+                // cerrar el scanner
+                entrada.close();
+        }
+
+}
